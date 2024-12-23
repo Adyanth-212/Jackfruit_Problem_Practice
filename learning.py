@@ -25,8 +25,9 @@ title.pack()
 #Handaling the data
 def get_restaurants():
     with open("restaurants.csv", 'r') as file_restaurants:
-        restaurant_contents = csv.DictReader(file_restaurants)
+        restaurant_contents = list(csv.DictReader(file_restaurants))
         return restaurant_contents
+
 
 #Getting the user data in read mode
 def get_user_data():
@@ -45,7 +46,6 @@ def booking_data():
 # Function for  Opening the new window(For the searching bit)
 def restaurant_list():
     file_contents = get_restaurants()
-
     newWindow = Toplevel(win)
     newWindow.title("Restaurant List")
     newWindow.geometry("400x300")
@@ -60,18 +60,24 @@ def restaurant_list():
     scrollbar = tkinter.Scrollbar(frame, orient=VERTICAL)
     scrollbar.pack(side=RIGHT, fill=Y)
 
+
     restaurant_list_to_show = tkinter.Listbox(frame, yscrollcommand=scrollbar.set)
+
+    for restaurant in file_contents:
+        restaurant_list_to_show.insert(END, file_contents[1])
+
     restaurant_list_to_show.pack(side=LEFT, fill=BOTH, expand=True)
 
     scrollbar.config(command=restaurant_list_to_show.yview)
 
-    for restaurant in file_contents:
-        restaurant_list_to_show.insert(END, restaurant)
+
+
 
     #Function to add new Restaurants if needed
-    def adding_restaraunt():
+    def adding_restaraunts():
         restaurant_addition_window = Toplevel(newWindow)
         newWindow.destroy()
+
         """
         •	restaurant_id (unique identifier)
         •	name
@@ -88,7 +94,7 @@ def restaurant_list():
 
 
 
-    add_button = tkinter.Button(newWindow, text='Click Here to Add A restaurant', width = 200, command= adding_restaurants)
+    add_button = tkinter.Button(newWindow, text='Click Here to Add A restaurant', width = 200, command=adding_restaraunts)
 
     def search_bar():
         search = Entry(restaurant_list, textvariable="Enter the Restaurant you wish to search")
