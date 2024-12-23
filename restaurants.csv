@@ -1,0 +1,4 @@
+restaurant_id,name,cuisine_type,rating,location,total_tables,table_configuration,opening_hours,closing_hours
+101,The Gourmet Bistro,Italian,4.5,Downtown,20,"10x2, 5x4",11:00,23:00
+102,Spice Symphony,Indian,4.7,Midtown,15,"5x2, 5x4, 5x6",12:00,22:00
+103,Sushi Central,Japanese,4.2,Uptown,12,"6x2, 3x4",10:00,21:00

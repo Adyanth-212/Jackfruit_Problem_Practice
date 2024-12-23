@@ -1,0 +1,4 @@
+user_id,name,email,phone_number,current_bookings
+201,John Doe,johndoe@example.com,555-1234,[301]
+202,Jane Smith,janesmith@example.com,555-5678,"[302, 303]"
+203,Alice Brown,alicebrown@example.com,555-8765,[]
